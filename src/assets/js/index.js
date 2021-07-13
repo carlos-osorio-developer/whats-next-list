@@ -1,9 +1,19 @@
-import '../css/style.css';
+import '../css/style.scss';
 const tasks = [
-  { description: 'eat', completed: false, index: 0 },
-  { description: 'sleep', completed: false, index: 1 },
-  { description: 'code', completed: false, index: 2 },
+  { description: 'sleep', status: false, index: 2 },
+  { description: 'eat', status: false, index: 0 },
+  { description: 'code', status: false, index: 1 },
 ];
 
 import { metPopulator } from './populator';
-metPopulator.init();
+
+if(!localStorage.getItem('index')){
+  for (let i = 0; i < tasks.length; i++) {
+    metPopulator.fill(tasks[i]);  
+  }  
+  metPopulator.updateDOM();
+}
+else {
+  metPopulator.updateDOM();
+}
+
