@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
-$p-size: 1rem;
-$h-size: 3rem;
+$main-size: 1.5rem;
+$scnd-size: 1rem;
 $main-color: rgb(49, 49, 49);
 $alt-color: rgb(246, 243, 238);
 
@@ -15,6 +15,11 @@ $alt-color: rgb(246, 243, 238);
 body {
   font-size: 16px;
   margin: 1px;
+}
+
+h1 {
+  font-size: $main-size;
+  padding-left: 10px;
 }
 
 div {
@@ -33,7 +38,13 @@ div {
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: $main-color 1px solid; 
+    border-bottom: $main-color 1px solid;
+
+    input {
+      border: none;
+      margin-left: 10px;
+      font-size: 18px;
+    }
   }
 }
 
@@ -64,7 +75,7 @@ ul {
 }
 
 p {
-  font-size: $p-size;  
+  font-size: $scnd-size;  
   padding-left: 16px;
 }
 
