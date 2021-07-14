@@ -5,14 +5,15 @@ const propDrag = {
 const metDrag = {
   init() {
     for (let i = 0; i < propDrag.items.length; i += 1) {
-      propDrag.items[i].addEventListener('dragstart', function() {metDrag.dragging(i)});  
-      propDrag.items[i].addEventListener('dragover', function(e) {metDrag.onBottom(e, propDrag.items[i])});
+      propDrag.items[i].addEventListener('dragstart', () => {propDrag.items[i].classList.add('ontop');}); 
+      propDrag.items[i].addEventListener('drop', () => {metDrag.dropOut(propDrag.items[i]);}); 
+      propDrag.items[i].addEventListener('dragover', (e) => {metDrag.onBottom(e, propDrag.items[i])});
       propDrag.items[i].addEventListener('dragleave', () => {propDrag.items[i].classList.remove('onbottom');});
     }    
   },
 
-  dragging(i) {
-    console.log('estoy volandoooo '+i)
+  dropOut(item) {
+    console.log(item)
   },
 
   onBottom(e,item) {
