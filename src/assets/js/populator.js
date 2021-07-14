@@ -1,4 +1,5 @@
 import metDrag from './dragndrop';
+import metStatus from './status';
 
 const propPopulator = {
   container: document.getElementsByTagName('ul')[0],
@@ -12,10 +13,6 @@ const metPopulator = {
       arr.push(obj[key]);
       localStorage.setItem(key, arr);
     }
-  },
-
-  fill(obj) {
-    metPopulator.updateStorage(obj);
   },
 
   sortStorage() {
@@ -35,14 +32,16 @@ const metPopulator = {
     const items = metPopulator.sortStorage();    
     for (let i = 0; i < items.length; i += 1) {
       const li = document.createElement('li');
-      li.draggable = true;
-      li.innerHTML = `<nav><input type='checkbox' class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i>`;
+      li.draggable = true;      
+      const checked = items[i][1]=='true' ? 'checked' : '';
+      li.innerHTML = `<nav><input type='checkbox' ${checked} class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i>`;
       const ul = propPopulator.container;
       ul.appendChild(li);
       li.addEventListener('dragstart', () => {li.classList.add('ontop');}); 
       li.addEventListener('drop', () => {metDrag.dropOut(i);}); 
       li.addEventListener('dragover', (e) => {metDrag.onBottom(e, li)});
-      li.addEventListener('dragleave', () => {li.classList.remove('onbottom');});      
+      li.addEventListener('dragleave', () => {li.classList.remove('onbottom');}); 
+      metStatus.init();
     } 
   },
 };
