@@ -1,6 +1,7 @@
 import '../css/style.scss';
 
 import metPopulator from './populator';
+import metDrag from './dragndrop';
 
 const tasks = [
   { description: 'sleep', status: false, index: 2 },
@@ -16,3 +17,5 @@ if (!localStorage.getItem('index')) {
 } else {
   metPopulator.updateDOM();
 }
+
+metDrag.init();

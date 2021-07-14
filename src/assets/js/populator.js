@@ -32,6 +32,7 @@ const metPopulator = {
     const items = metPopulator.sortStorage();
     items.forEach((item) => {
       const li = document.createElement('li');
+      li.draggable = true;
       li.innerHTML = `<nav><input type='checkbox' name='completed'><p>${item[0]}</p></nav><i class="fas fa-ellipsis-v"></i>`;
       const ul = propPopulator.container;
       ul.appendChild(li);
