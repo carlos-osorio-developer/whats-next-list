@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+$main-size: 1.5rem;
+$scnd-size: 1rem;
+$main-color: rgb(49, 49, 49);
+$alt-color: rgb(246, 243, 238);
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-size: 16px;
+  margin: 1px;
+}
+
+h1 {
+  font-size: $main-size;
+  padding-left: 10px;
+}
+
+div {
+  width: 70%;
+  margin: 50px auto;
+  border-right: $main-color 1px solid;
+  border-left: $main-color 1px solid;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: $main-color 1px solid;
+
+    input {
+      border: none;
+      margin-left: 10px;
+      font-size: 18px;
+    }
+  }
+}
+
+#main:first-child {
+  border-top: $main-color 1px solid;
+}
+
+li {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $alt-color;
+  border-bottom: $main-color 1px solid;
+
+  nav {
+    display: flex;
+  }
+}
+
+li:nth-child(odd) {
+  background: rgb(238, 238, 238);
+}
+
+ul {
+  width: 100%;
+  padding: 0;
+}
+
+p {
+  font-size: $scnd-size;
+  padding-left: 16px;
+}
+
+i {
+  cursor: pointer;
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+.button {
+  padding: 0 0;
+  height: 30px;
+  background-color: rgb(218, 218, 218);
+  cursor: pointer;
+
+  p {
+    text-align: center;
+    width: 100%;
+    padding: 0 0;
+    color: rgb(92, 92, 92);
+  }
+}
