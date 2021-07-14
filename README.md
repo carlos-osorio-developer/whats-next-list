@@ -24,6 +24,10 @@ To get a local copy up and running follow these simple example steps.
 
 3. Git
 
+4. WebPack
+
+5. WebPack-CLI
+
 
 ### Setup
 
@@ -33,6 +37,9 @@ To get a local copy up and running follow these simple example steps.
 
 - Go to the cloned directory:
 `cd whats-next-list`
+
+- Run the following command to compile the files for production:
+`npm run build`
 
 
 ### Usage
