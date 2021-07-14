@@ -1,3 +1,5 @@
+import metDrag from './dragndrop';
+
 const propPopulator = {
   container: document.getElementsByTagName('ul')[0],
 };
@@ -29,14 +31,19 @@ const metPopulator = {
   },
 
   updateDOM() {
-    const items = metPopulator.sortStorage();
-    items.forEach((item) => {
+    propPopulator.container.innerHTML = '';
+    const items = metPopulator.sortStorage();    
+    for (let i = 0; i < items.length; i += 1) {
       const li = document.createElement('li');
       li.draggable = true;
-      li.innerHTML = `<nav><input type='checkbox' name='completed'><p>${item[0]}</p></nav><i class="fas fa-ellipsis-v"></i>`;
+      li.innerHTML = `<nav><input type='checkbox' class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i>`;
       const ul = propPopulator.container;
       ul.appendChild(li);
-    });
+      li.addEventListener('dragstart', () => {li.classList.add('ontop');}); 
+      li.addEventListener('drop', () => {metDrag.dropOut(i);}); 
+      li.addEventListener('dragover', (e) => {metDrag.onBottom(e, li)});
+      li.addEventListener('dragleave', () => {li.classList.remove('onbottom');});      
+    } 
   },
 };
 

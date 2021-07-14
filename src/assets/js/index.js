@@ -1,7 +1,6 @@
 import '../css/style.scss';
 
 import metPopulator from './populator';
-import metDrag from './dragndrop';
 import tasks from './tasks'
 
 if (!localStorage.getItem('index')) {
@@ -12,5 +11,3 @@ if (!localStorage.getItem('index')) {
 } else {
   metPopulator.updateDOM();
 }
-
-metDrag.init();
