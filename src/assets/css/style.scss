@@ -24,7 +24,7 @@ h1 {
 
 div {
   width: 70%;
-  max-width: 400px;
+  max-width: 450px;  
   margin: 100px auto;
   border-right: $main-color 1px solid;
   border-left: $main-color 1px solid;
@@ -42,9 +42,12 @@ div {
     border-bottom: $main-color 1px solid;
 
     input {
+      width: 70%;
+      min-height: 30px;
       border: none;
       margin-left: 10px;
       font-size: 18px;
+      border-radius: 10px;
     }
   }
 }
@@ -102,4 +105,8 @@ i {
     padding: 0 0;
     color: rgb(92, 92, 92);
   }
+}
+
+.error-msg {
+  background-color: rgb(246, 203, 168);
 }

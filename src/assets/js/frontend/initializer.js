@@ -28,7 +28,7 @@ const metListen = {
     return dictionary;
   },
 
-  createDOM() {
+  createDOMitem() {
     const items = metListen.sortStorage();
     for (let i = 0; i < items.length; i += 1) {
       const li = document.createElement('li');
