@@ -36,7 +36,7 @@ const metListen = {
       const checked = items[i][1] === 'true' ? 'checked' : '';
       li.innerHTML = `<nav><input type='checkbox' ${checked} class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i>`;
       const ul = propListen.container;
-      if (ul.children[i]) { ul.replaceChild(li, ul.children[i]); } else { ul.appendChild(li); }
+      ul.appendChild(li);
       li.addEventListener('dragstart', () => { li.classList.add('ontop'); });
       li.addEventListener('drop', () => { metDrag.dropOut(i); });
       li.addEventListener('dragover', (e) => { metDrag.onBottom(e, li); });

@@ -19,7 +19,8 @@ const metPopulator = {
     const dictionary = [];
     for (let i = 0; i < index.length; i += 1) {
       dictionary[i] = [descr[i], status[i], index[i]];
-    }    
+    }
+    dictionary.sort((a, b) => ((a[2] > b[2]) ? 1 : -1));
     return dictionary;
   },
 
