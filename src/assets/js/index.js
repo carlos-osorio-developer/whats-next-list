@@ -1,5 +1,7 @@
 import '../css/style.scss';
 
+import metListen from './frontend/initializer';
 import metTasks from './backend/tasks';
 
-metTasks.init();
+document.getElementsByClassName('fa-calendar-plus')[0].addEventListener('click', () => {metTasks.create()})
+metListen.createDOM();

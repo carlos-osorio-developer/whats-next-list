@@ -14,6 +14,7 @@ const metListen = {
       arr.push(obj[key]);
       localStorage.setItem(key, arr);
     }
+    metListen.createDOM();
   },
 
   sortStorage() {
@@ -28,7 +29,7 @@ const metListen = {
     return dictionary;
   },
 
-  createDOMitem() {
+  createDOM() {    
     const items = metListen.sortStorage();
     for (let i = 0; i < items.length; i += 1) {
       const li = document.createElement('li');

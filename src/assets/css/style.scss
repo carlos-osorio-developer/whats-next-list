@@ -67,6 +67,10 @@ li {
   nav {
     display: flex;
   }
+
+  .fa-ellipsis-v{
+    cursor: all-scroll;
+  }
 }
 
 li:nth-child(odd) {
