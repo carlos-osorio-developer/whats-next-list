@@ -24,7 +24,7 @@ h1 {
 
 div {
   width: 70%;
-  max-width: 450px;  
+  max-width: 450px;
   margin: 100px auto;
   border-right: $main-color 1px solid;
   border-left: $main-color 1px solid;
@@ -40,15 +40,6 @@ div {
     border-left: none;
     border-right: none;
     border-bottom: $main-color 1px solid;
-
-    input {
-      width: 70%;
-      min-height: 30px;
-      border: none;
-      margin-left: 10px;
-      font-size: 18px;
-      border-radius: 10px;
-    }
   }
 }
 
@@ -68,7 +59,7 @@ li {
     display: flex;
   }
 
-  .fa-ellipsis-v{
+  .fa-ellipsis-v {
     cursor: all-scroll;
   }
 }
@@ -89,6 +80,7 @@ ul {
 p {
   font-size: $scnd-size;
   padding-left: 16px;
+  cursor: text;
 }
 
 i {
@@ -109,6 +101,16 @@ i {
     padding: 0 0;
     color: rgb(92, 92, 92);
   }
+}
+
+.input-field {
+  width: 70%;
+  min-height: 30px;
+  border: none;
+  margin-left: 10px;
+  padding-left: 5px;
+  font-size: 18px;
+  border-radius: 5px;
 }
 
 .error-msg {

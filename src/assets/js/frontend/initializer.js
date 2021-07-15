@@ -1,5 +1,6 @@
 import metDrag from '../backend/dragndrop';
 import metStatus from '../backend/status';
+import metName from '../backend/taskname';
 
 const propListen = {
   container: document.getElementsByTagName('ul')[0],
@@ -43,6 +44,7 @@ const metListen = {
       li.addEventListener('drop', () => { metDrag.dropOut(i); });
       li.addEventListener('dragover', (e) => { metDrag.onBottom(e, li); });
       li.addEventListener('dragleave', () => { li.classList.remove('onbottom'); });
+      li.firstChild.lastChild.addEventListener('click', () => { metName.editName(i); });
       li.firstChild.firstChild.addEventListener('change', () => { metStatus.updateStatus(li.firstChild.firstChild, i); });
     }
   },
