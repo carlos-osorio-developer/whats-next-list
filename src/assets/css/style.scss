@@ -24,7 +24,8 @@ h1 {
 
 div {
   width: 70%;
-  margin: 50px auto;
+  max-width: 400px;
+  margin: 100px auto;
   border-right: $main-color 1px solid;
   border-left: $main-color 1px solid;
 
