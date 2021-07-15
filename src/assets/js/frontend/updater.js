@@ -12,10 +12,6 @@ const metPopulator = {
     }
   },
 
-  fill(obj) {
-    metPopulator.updateStorage(obj);
-  },
-
   sortStorage() {
     const descr = localStorage.getItem('description') ? localStorage.getItem('description').split(',') : [];
     const status = localStorage.getItem('status') ? localStorage.getItem('status').split(',') : [];
@@ -30,12 +26,14 @@ const metPopulator = {
 
   updateDOM() {
     const items = metPopulator.sortStorage();
-    items.forEach((item) => {
-      const li = document.createElement('li');
-      li.innerHTML = `<nav><input type='checkbox' name='completed'><p>${item[0]}</p></nav><i class="fas fa-ellipsis-v"></i>`;
-      const ul = propPopulator.container;
-      ul.appendChild(li);
-    });
+    for (let i = 0; i < items.length; i += 1) {
+      const nameStr = items[i][0];
+      const checkBool = items[i][1] === 'true';
+      const name = propPopulator.container.children[i].firstChild.lastChild;
+      const checkbox = propPopulator.container.children[i].firstChild.firstChild;
+      checkbox.checked = checkBool;
+      name.textContent = nameStr;
+    }
   },
 };
 

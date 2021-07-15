@@ -1,18 +1,13 @@
 import '../css/style.scss';
 
-import metPopulator from './populator';
-
-const tasks = [
-  { description: 'sleep', status: false, index: 2 },
-  { description: 'eat', status: false, index: 0 },
-  { description: 'code', status: false, index: 1 },
-];
+import metListen from './frontend/initializer';
+import tasks from './backend/tasks';
 
 if (!localStorage.getItem('index')) {
   for (let i = 0; i < tasks.length; i += 1) {
-    metPopulator.fill(tasks[i]);
+    metListen.updateStorage(tasks[i]);
   }
-  metPopulator.updateDOM();
+  metListen.createDOM();
 } else {
-  metPopulator.updateDOM();
+  metListen.createDOM();
 }

@@ -38,6 +38,9 @@ To get a local copy up and running follow these simple example steps.
 - Go to the cloned directory:
 `cd whats-next-list`
 
+- Run the following command to install dependencies:
+`npm install`
+
 - Run the following command to compile the files for production:
 `npm run build`
 
