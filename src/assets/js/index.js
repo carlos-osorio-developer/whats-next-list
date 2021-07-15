@@ -1,16 +1,13 @@
 import '../css/style.scss';
 
-import metPopulator from './populator';
-import tasks from './tasks'
-import metStatus from './status'
+import metListen from './frontend/initializer';
+import tasks from './backend/tasks';
 
 if (!localStorage.getItem('index')) {
   for (let i = 0; i < tasks.length; i += 1) {
-    metPopulator.updateStorage(tasks[i]);
+    metListen.updateStorage(tasks[i]);
   }
-  metPopulator.updateDOM();
+  metListen.createDOM();
 } else {
-  metPopulator.updateDOM();
+  metListen.createDOM();
 }
-
-metStatus.init();
