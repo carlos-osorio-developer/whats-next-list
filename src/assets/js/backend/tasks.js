@@ -9,17 +9,16 @@ const propTasks = {
 const metTasks = {
 
   create() {
-    if(propTasks.addField.value === '') {
+    if (propTasks.addField.value === '') {
       propTasks.addField.classList.add('error-msg');
       propTasks.addField.setAttribute('placeholder', 'Please enter task description here');
-    }
-    else {
+    } else {
       propTasks.addField.classList.remove('error-msg');
       propTasks.addField.setAttribute('placeholder', 'Add to your list...');
       const obj = { description: propTasks.addField.value, status: false, index: propTasks.index };
       metListen.updateStorage(obj);
       propTasks.index += 1;
-      propTasks.addField.value='';
+      propTasks.addField.value = '';
     }
   },
 };
