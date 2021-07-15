@@ -31,6 +31,7 @@ const metListen = {
 
   createDOM() {
     const items = metListen.sortStorage();
+    propListen.container.innerHTML = '';
     for (let i = 0; i < items.length; i += 1) {
       const li = document.createElement('li');
       li.draggable = true;
