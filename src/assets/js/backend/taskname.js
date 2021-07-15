@@ -7,22 +7,31 @@ const propName = {
 const metName = {
   editName(index) {
     propName.items[index].setAttribute('draggable', 'false');
+
     const pElement = propName.items[index].firstChild.lastChild;
     pElement.style.display = 'none';
     const inputField = document.createElement('input');
     inputField.className = 'input-field';
     inputField.value = pElement.textContent;
-    inputField.addEventListener('focusout', () => { metName.updateName(pElement, inputField, index); });
+
+    const dragIcon = propName.items[index].lastElementChild;
+    dragIcon.style.display = 'none';
+    const deleteIcon = document.createElement('i');
+    deleteIcon.className = 'fas fa-trash-alt';
+    propName.items[index].appendChild(deleteIcon);
+
+    deleteIcon.addEventListener('click', () => { console.log('holaaa') })
+    inputField.addEventListener('focusout', () => { metName.updateName(pElement, inputField, index, dragIcon, deleteIcon); });
     inputField.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
-        metName.updateName(pElement, inputField, index);
+        metName.updateName(pElement, inputField, index, dragIcon, deleteIcon);
       }
     });
     propName.items[index].firstChild.appendChild(inputField);
-    inputField.focus();
+    inputField.focus();    
   },
 
-  updateName(p, input, index) {
+  updateName(p, input, index, dotsIcon, thrashIcon) {
     const newDict = metPopulator.getStorage();
     newDict[index][0] = input.value;
     localStorage.clear();
@@ -30,9 +39,14 @@ const metName = {
       const obj = { description: newDict[i][0], status: newDict[i][1], index: newDict[i][2] };
       metPopulator.updateStorage(obj);
     }
+
     input.remove();
     p.style.display = 'block';
     propName.items[index].setAttribute('draggable', 'true');
+
+    thrashIcon.remove();
+    dotsIcon.style.display = 'block';
+    
     metPopulator.updateDOM();
   },
 };
