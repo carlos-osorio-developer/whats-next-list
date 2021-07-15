@@ -12,20 +12,19 @@ const metPopulator = {
     }
   },
 
-  sortStorage() {
+  getStorage() {
     const descr = localStorage.getItem('description') ? localStorage.getItem('description').split(',') : [];
     const status = localStorage.getItem('status') ? localStorage.getItem('status').split(',') : [];
     const index = localStorage.getItem('index') ? localStorage.getItem('index').split(',') : [];
     const dictionary = [];
     for (let i = 0; i < index.length; i += 1) {
       dictionary[i] = [descr[i], status[i], index[i]];
-    }
-    dictionary.sort((a, b) => ((a[2] > b[2]) ? 1 : -1));
+    }    
     return dictionary;
   },
 
   updateDOM() {
-    const items = metPopulator.sortStorage();
+    const items = metPopulator.getStorage();
     for (let i = 0; i < items.length; i += 1) {
       const nameStr = items[i][0];
       const checkBool = items[i][1] === 'true';

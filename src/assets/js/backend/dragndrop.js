@@ -11,7 +11,7 @@ const metDrag = {
     const dragged = document.getElementsByClassName('ontop')[0];
     const hovered = document.getElementsByClassName('onbottom')[0];
     const oldIndex = Array.prototype.indexOf.call(propDrag.container.children, dragged);
-    const newDict = metPopulator.sortStorage();
+    const newDict = metPopulator.getStorage();
     const draging = newDict.splice(oldIndex, 1);
     newDict.splice(newIndex, 0, draging[0]);
     localStorage.clear();
