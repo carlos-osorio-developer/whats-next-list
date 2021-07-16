@@ -5,7 +5,7 @@ const propName = {
 };
 
 const metName = {
-  editName(index) {
+  editName(index) {    
     propName.items[index].setAttribute('draggable', 'false');
 
     const pElement = propName.items[index].firstChild.lastChild;
@@ -13,25 +13,24 @@ const metName = {
     const inputField = document.createElement('input');
     inputField.className = 'input-field';
     inputField.value = pElement.textContent;
+    propName.items[index].firstChild.appendChild(inputField);
+    inputField.focus();
 
-    const dragIcon = propName.items[index].lastElementChild;
-    dragIcon.style.display = 'none';
-    const deleteIcon = document.createElement('i');
-    deleteIcon.className = 'fas fa-trash-alt';
-    propName.items[index].appendChild(deleteIcon);
-
-    deleteIcon.addEventListener('click', () => { console.log('holaaa') })
-    inputField.addEventListener('focusout', () => { metName.updateName(pElement, inputField, index, dragIcon, deleteIcon); });
+    // deleteIcon.addEventListener('click', () => { metDelete.deleteItem(deleteIcon); });
+    inputField.addEventListener('focusout', () => {
+      setTimeout(() => { metName.updateName(pElement, inputField, index); }, 80);
+    });
     inputField.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
-        metName.updateName(pElement, inputField, index, dragIcon, deleteIcon);
+        metName.updateName(pElement, inputField, index);
       }
     });
-    propName.items[index].firstChild.appendChild(inputField);
-    inputField.focus();    
+
+    
   },
 
-  updateName(p, input, index, dotsIcon, thrashIcon) {
+  updateName(p, input, index) {
+    console.log('update name Being calledddddd')
     const newDict = metPopulator.getStorage();
     newDict[index][0] = input.value;
     localStorage.clear();
@@ -40,12 +39,11 @@ const metName = {
       metPopulator.updateStorage(obj);
     }
 
-    input.remove();
+    if (propName.items[index].firstChild.contains(input)) {
+      propName.items[index].firstChild.removeChild(input);
+    }
     p.style.display = 'block';
     propName.items[index].setAttribute('draggable', 'true');
-
-    thrashIcon.remove();
-    dotsIcon.style.display = 'block';
     
     metPopulator.updateDOM();
   },
