@@ -24,7 +24,8 @@ h1 {
 
 div {
   width: 70%;
-  margin: 50px auto;
+  max-width: 450px;
+  margin: 100px auto;
   border-right: $main-color 1px solid;
   border-left: $main-color 1px solid;
 
@@ -39,12 +40,6 @@ div {
     border-left: none;
     border-right: none;
     border-bottom: $main-color 1px solid;
-
-    input {
-      border: none;
-      margin-left: 10px;
-      font-size: 18px;
-    }
   }
 }
 
@@ -62,6 +57,10 @@ li {
 
   nav {
     display: flex;
+  }
+
+  .fa-ellipsis-v {
+    cursor: all-scroll;
   }
 }
 
@@ -81,6 +80,7 @@ ul {
 p {
   font-size: $scnd-size;
   padding-left: 16px;
+  cursor: text;
 }
 
 i {
@@ -96,9 +96,28 @@ i {
   cursor: pointer;
 
   p {
+    cursor: pointer;
     text-align: center;
     width: 100%;
     padding: 0 0;
     color: rgb(92, 92, 92);
   }
+}
+
+.input-field {
+  width: 70%;
+  min-height: 30px;
+  border: none;
+  margin-left: 10px;
+  padding-left: 5px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.error-msg {
+  background-color: rgb(246, 203, 168);
+}
+
+.invisible {
+  display: none;
 }

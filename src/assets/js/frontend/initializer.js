@@ -1,9 +1,12 @@
 import metDrag from '../backend/dragndrop';
 import metStatus from '../backend/status';
+import metName from '../backend/taskname';
+import metDelete from '../backend/deletetask';
 
 const propListen = {
   container: document.getElementsByTagName('ul')[0],
   items: document.getElementsByTagName('li'),
+  button: document.getElementsByClassName('button')[0],
 };
 
 const metListen = {
@@ -14,6 +17,7 @@ const metListen = {
       arr.push(obj[key]);
       localStorage.setItem(key, arr);
     }
+    metListen.createDOM();
   },
 
   sortStorage() {
@@ -30,19 +34,27 @@ const metListen = {
 
   createDOM() {
     const items = metListen.sortStorage();
+    propListen.container.innerHTML = '';
     for (let i = 0; i < items.length; i += 1) {
       const li = document.createElement('li');
       li.draggable = true;
       const checked = items[i][1] === 'true' ? 'checked' : '';
-      li.innerHTML = `<nav><input type='checkbox' ${checked} class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i>`;
+      li.innerHTML = `<nav><input type='checkbox' ${checked} class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i><i class="fas fa-trash-alt invisible"></i>`;
       const ul = propListen.container;
       ul.appendChild(li);
       li.addEventListener('dragstart', () => { li.classList.add('ontop'); });
       li.addEventListener('drop', () => { metDrag.dropOut(i); });
       li.addEventListener('dragover', (e) => { metDrag.onBottom(e, li); });
       li.addEventListener('dragleave', () => { li.classList.remove('onbottom'); });
+      li.firstChild.lastChild.addEventListener('click', () => { metName.editName(i); });
       li.firstChild.firstChild.addEventListener('change', () => { metStatus.updateStatus(li.firstChild.firstChild, i); });
+      li.lastChild.addEventListener('click', () => { setTimeout(() => { metDelete.deleteItem(i); }, 200); });
     }
+    propListen.button.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      metDelete.deleteChecked();
+    });
   },
 };
 
