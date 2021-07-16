@@ -5,7 +5,7 @@ const propName = {
 };
 
 const metName = {
-  editName(index) {    
+  editName(index) {
     propName.items[index].setAttribute('draggable', 'false');
 
     const pElement = propName.items[index].firstChild.lastChild;
@@ -21,21 +21,14 @@ const metName = {
     dots.classList.add('invisible');
     thrash.classList.remove('invisible');
 
-    // deleteIcon.addEventListener('click', () => { metDelete.deleteItem(deleteIcon); });
-    inputField.addEventListener('focusout', () => {
-      setTimeout(() => { metName.updateName(pElement, inputField, index, dots, thrash); }, 80);
-    });
     inputField.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         metName.updateName(pElement, inputField, index, dots, thrash);
       }
     });
-
-    
   },
 
   updateName(p, input, index, dots, thrash) {
-    console.log('update name Being calledddddd')
     const newDict = metPopulator.getStorage();
     newDict[index][0] = input.value;
     localStorage.clear();
@@ -52,7 +45,7 @@ const metName = {
 
     dots.classList.remove('invisible');
     thrash.classList.add('invisible');
-    
+
     metPopulator.updateDOM();
   },
 };

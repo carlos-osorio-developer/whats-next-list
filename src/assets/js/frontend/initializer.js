@@ -1,6 +1,7 @@
 import metDrag from '../backend/dragndrop';
 import metStatus from '../backend/status';
 import metName from '../backend/taskname';
+import metDelete from '../backend/deletetask';
 
 const propListen = {
   container: document.getElementsByTagName('ul')[0],
@@ -46,6 +47,7 @@ const metListen = {
       li.addEventListener('dragleave', () => { li.classList.remove('onbottom'); });
       li.firstChild.lastChild.addEventListener('click', () => { metName.editName(i); });
       li.firstChild.firstChild.addEventListener('change', () => { metStatus.updateStatus(li.firstChild.firstChild, i); });
+      li.lastChild.addEventListener('click', () => { setTimeout(() => { metDelete.deleteItem(i); }, 200); });
     }
   },
 };

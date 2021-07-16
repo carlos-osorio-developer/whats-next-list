@@ -6,28 +6,27 @@ const propDelete = {
 };
 
 const metDelete = {
-  deleteItem(icon) {
-    const li = icon.parentNode;
 
-    // var old_element = document.getElementById("btn");
-    let new_li = li.cloneNode(true);
-    li.parentNode.replaceChild(new_li, li);
+  deleteItem(index) {
+    const li = propDelete.items[index];
 
-    const index = Array.prototype.indexOf.call(propDelete.container.children, li);
     const newDict = metPopulator.getStorage();
     newDict.splice(index, 1);
-    console.log(newDict);
 
     localStorage.clear();
     for (let i = 0; i < newDict.length; i += 1) {
       const obj = { description: newDict[i][0], status: newDict[i][1], index: i };
       metPopulator.updateStorage(obj);
+      console.log('the object ', i, ' is ', obj);
     }
 
-    console.log(localStorage);
+    li.remove();
 
-    new_li.remove();
-    // setTimeout(() => { metPopulator.updateDOM(); }, 80);
+    metDelete.updateListeners();
+  },
+
+  updateListeners() {
+    metPopulator.updateDOM;
   },
 };
 
