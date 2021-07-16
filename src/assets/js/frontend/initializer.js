@@ -37,7 +37,7 @@ const metListen = {
       const li = document.createElement('li');
       li.draggable = true;
       const checked = items[i][1] === 'true' ? 'checked' : '';
-      li.innerHTML = `<nav><input type='checkbox' ${checked} class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"><i class="fas fa-trash-alt invisible"></i>`;
+      li.innerHTML = `<nav><input type='checkbox' ${checked} class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i><i class="fas fa-trash-alt invisible"></i>`;
       const ul = propListen.container;
       ul.appendChild(li);
       li.addEventListener('dragstart', () => { li.classList.add('ontop'); });

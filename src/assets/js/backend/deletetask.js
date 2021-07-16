@@ -32,9 +32,3 @@ const metDelete = {
 };
 
 export default metDelete;
-
-const dragIcon = propName.items[index].lastElementChild;
-    dragIcon.style.display = 'none';
-    const deleteIcon = document.createElement('i');
-    deleteIcon.className = 'fas fa-trash-alt';
-    propName.items[index].appendChild(deleteIcon);
