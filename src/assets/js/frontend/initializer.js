@@ -6,6 +6,7 @@ import metDelete from '../backend/deletetask';
 const propListen = {
   container: document.getElementsByTagName('ul')[0],
   items: document.getElementsByTagName('li'),
+  button: document.getElementsByClassName('button')[0],
 };
 
 const metListen = {
@@ -49,6 +50,11 @@ const metListen = {
       li.firstChild.firstChild.addEventListener('change', () => { metStatus.updateStatus(li.firstChild.firstChild, i); });
       li.lastChild.addEventListener('click', () => { setTimeout(() => { metDelete.deleteItem(i); }, 200); });
     }
+    propListen.button.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      metDelete.deleteChecked();
+    });
   },
 };
 
