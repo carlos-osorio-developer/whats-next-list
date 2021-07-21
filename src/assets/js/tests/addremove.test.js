@@ -1,3 +1,4 @@
+import metTasks from '../backend/addtask'
 import metDelete from '../backend/deletetask'
 
 class LocalStorageMock {
@@ -22,15 +23,51 @@ class LocalStorageMock {
   }
 };
 
-global.localStorage = new LocalStorageMock;
-localStorage.setItem('status', 'false,false,false');
-localStorage.setItem('index', '0,1,2');
-localStorage.setItem('description', 'Task 1,Task 2,Task 3');
+describe('Testing the add function', () => {
+
+  test('adds one element to the DOM', () => {
+    document.body.innerHTML = `    
+    <input id="name-field" value="Something">
+    <i class="far fa-calendar-plus"></i>
+    <ul></ul>
+    <div class="button"><p>Clear all completed</p></div>`;        
+
+    const addIcon = document.getElementsByClassName('fa-calendar-plus')[0];
+    addIcon.addEventListener('click', () => { metTasks.create(); });
+    
+    addIcon.click();
+
+    expect(document.getElementsByTagName('p')[0].textContent).toBe('Something');
+  });
+
+  test('show error msg if there is no value in input field', () => {
+    document.body.innerHTML = `    
+    <input id="name-field">
+    <i class="far fa-calendar-plus"></i>
+    <ul></ul>
+    <div class="button"><p>Clear all completed</p></div>`;        
+
+    const addIcon = document.getElementsByClassName('fa-calendar-plus')[0];
+    addIcon.addEventListener('click', () => { metTasks.create(); });
+    
+    addIcon.click();
+
+    expect(document.getElementsByTagName('input')[0].placeholder).toBe('Please enter task description here');
+  });
 
 
-describe('Testing DOM elements', () => {
+})
+
+
+describe('Testing the delete function', () => {
 
   test('delete one element to the DOM', () => {
+
+    global.localStorage = new LocalStorageMock;
+    localStorage.setItem('status', 'false,false,false');
+    localStorage.setItem('index', '0,1,2');
+    localStorage.setItem('description', 'Task 1,Task 2,Task 3');
+
     document.body.innerHTML = `    
     <input id="name-field" placeholder="Add to your list..." value="Something" />
     <i class="far fa-calendar-plus" />
