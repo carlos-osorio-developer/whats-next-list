@@ -1,16 +1,12 @@
 import metPopulator from '../frontend/updater';
 
-const propDrag = {
-  items: document.getElementsByTagName('li'),
-  container: document.getElementsByTagName('ul')[0],
-};
-
 const metDrag = {
 
   dropOut(newIndex) {
+    const ul = document.getElementsByTagName('ul')[0];
     const dragged = document.getElementsByClassName('ontop')[0];
     const hovered = document.getElementsByClassName('onbottom')[0];
-    const oldIndex = Array.prototype.indexOf.call(propDrag.container.children, dragged);
+    const oldIndex = Array.prototype.indexOf.call(ul.children, dragged);
     const newDict = metPopulator.getStorage();
     const draging = newDict.splice(oldIndex, 1);
     newDict.splice(newIndex, 0, draging[0]);
