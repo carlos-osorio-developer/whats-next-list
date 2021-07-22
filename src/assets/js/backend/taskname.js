@@ -1,23 +1,20 @@
 import metPopulator from '../frontend/updater';
 
-const propName = {
-  items: document.getElementsByTagName('li'),
-};
-
 const metName = {
   editName(index) {
-    propName.items[index].setAttribute('draggable', 'false');
+    const li = document.getElementsByTagName('li');
+    li[index].setAttribute('draggable', 'false');
 
-    const pElement = propName.items[index].firstChild.lastChild;
+    const pElement = li[index].firstChild.lastChild;
     pElement.style.display = 'none';
     const inputField = document.createElement('input');
     inputField.className = 'input-field';
     inputField.value = pElement.textContent;
-    propName.items[index].firstChild.appendChild(inputField);
+    li[index].firstChild.appendChild(inputField);
     inputField.focus();
 
-    const thrash = propName.items[index].lastChild;
-    const dots = propName.items[index].getElementsByClassName('fa-ellipsis-v')[0];
+    const thrash = li[index].lastChild;
+    const dots = li[index].getElementsByClassName('fa-ellipsis-v')[0];
     dots.classList.add('invisible');
     thrash.classList.remove('invisible');
 
@@ -29,6 +26,7 @@ const metName = {
   },
 
   updateName(p, input, index, dots, thrash) {
+    const li = document.getElementsByTagName('li');
     const newDict = metPopulator.getStorage();
     newDict[index][0] = input.value;
     localStorage.clear();
@@ -37,11 +35,11 @@ const metName = {
       metPopulator.updateStorage(obj);
     }
 
-    if (propName.items[index].firstChild.contains(input)) {
-      propName.items[index].firstChild.removeChild(input);
+    if (li[index].firstChild.contains(input)) {
+      li[index].firstChild.removeChild(input);
     }
     p.style.display = 'block';
-    propName.items[index].setAttribute('draggable', 'true');
+    li[index].setAttribute('draggable', 'true');
 
     dots.classList.remove('invisible');
     thrash.classList.add('invisible');

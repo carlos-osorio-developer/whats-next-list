@@ -48,6 +48,8 @@ To get a local copy up and running follow these simple example steps.
 - Run the following command to compile the files for production:
 `npm run build`
 
+- Use the following command to run the tests:
+`npm run test`
 
 ### Usage
 

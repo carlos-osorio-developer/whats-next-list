@@ -3,15 +3,10 @@ import metStatus from './status';
 import metName from './taskname';
 import metPopulator from '../frontend/updater';
 
-const propDelete = {
-  container: document.getElementsByTagName('ul')[0],
-  items: document.getElementsByTagName('li'),
-};
-
 const metDelete = {
 
   deleteItem(index) {
-    const li = propDelete.items[index];
+    const li = document.getElementsByTagName('li')[index];
 
     const newDict = metPopulator.getStorage();
     newDict.splice(index, 1);
@@ -29,7 +24,7 @@ const metDelete = {
   deleteChecked() {
     const Dict = metPopulator.getStorage();
     for (let i = Dict.length - 1; i >= 0; i -= 1) {
-      const li = propDelete.items[i];
+      const li = document.getElementsByTagName('li')[i];
       if (li.firstElementChild.firstElementChild.checked) {
         li.remove();
       }
@@ -46,14 +41,14 @@ const metDelete = {
   },
 
   addListeners() {
+    const ul = document.getElementsByTagName('ul')[0];
     const items = metPopulator.getStorage();
-    propDelete.container.innerHTML = '';
+    ul.innerHTML = '';
     for (let i = 0; i < items.length; i += 1) {
       const li = document.createElement('li');
       li.draggable = true;
       const checked = items[i][1] === 'true' ? 'checked' : '';
       li.innerHTML = `<nav><input type='checkbox' ${checked} class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i><i class="fas fa-trash-alt invisible"></i>`;
-      const ul = propDelete.container;
       ul.appendChild(li);
       li.addEventListener('dragstart', () => { li.classList.add('ontop'); });
       li.addEventListener('drop', () => { metDrag.dropOut(i); });

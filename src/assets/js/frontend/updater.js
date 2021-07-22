@@ -1,7 +1,3 @@
-const propPopulator = {
-  container: document.getElementsByTagName('ul')[0],
-};
-
 const metPopulator = {
   updateStorage(obj) {
     for (let i = 0; i < Object.keys(obj).length; i += 1) {
@@ -25,12 +21,14 @@ const metPopulator = {
   },
 
   updateDOM() {
+    const ul = document.getElementsByTagName('ul')[0];
     const items = metPopulator.getStorage();
+
     for (let i = 0; i < items.length; i += 1) {
       const nameStr = items[i][0];
       const checkBool = items[i][1] === 'true';
-      const name = propPopulator.container.children[i].firstChild.lastChild;
-      const checkbox = propPopulator.container.children[i].firstChild.firstChild;
+      const name = ul.children[i].firstChild.lastChild;
+      const checkbox = ul.children[i].firstChild.firstChild;
       checkbox.checked = checkBool;
       name.textContent = nameStr;
     }
