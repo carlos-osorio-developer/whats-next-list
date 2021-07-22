@@ -26,16 +26,16 @@ const metListen = {
     return dictionary;
   },
 
-  createDOM() {    
+  createDOM() {
     const ul = document.getElementsByTagName('ul')[0];
     const items = metListen.sortStorage();
-    
+
     ul.innerHTML = '';
     for (let i = 0; i < items.length; i += 1) {
       const li = document.createElement('li');
       li.draggable = true;
       const checked = items[i][1] === 'true' ? 'checked' : '';
-      li.innerHTML = `<nav><input type='checkbox' ${checked} class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i><i class="fas fa-trash-alt invisible"></i>`;      
+      li.innerHTML = `<nav><input type='checkbox' ${checked} class='status' name='completed'><p>${items[i][0]}</p></nav><i class="fas fa-ellipsis-v"></i><i class="fas fa-trash-alt invisible"></i>`;
       ul.appendChild(li);
       li.addEventListener('dragstart', () => { li.classList.add('ontop'); });
       li.addEventListener('drop', () => { metDrag.dropOut(i); });
@@ -45,7 +45,7 @@ const metListen = {
       li.firstChild.firstChild.addEventListener('change', () => { metStatus.updateStatus(li.firstChild.firstChild, i); });
       li.lastChild.addEventListener('click', () => { setTimeout(() => { metDelete.deleteItem(i); }, 200); });
     }
-    
+
     const delButton = document.getElementsByClassName('button')[0];
     delButton.addEventListener('click', (e) => {
       e.preventDefault();
